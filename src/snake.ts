@@ -1,4 +1,4 @@
-class Snake {
+export default class Snake {
     game: number
     canvas: HTMLCanvasElement
     ctx: CanvasRenderingContext2D 
