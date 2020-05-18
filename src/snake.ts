@@ -28,7 +28,7 @@ class Snake {
     }
 
     play(): void {
-        console.log('game')
+        console.log(this.xVelocity, this.yVelocity)
     }
 
     move(event: KeyboardEvent): void {
@@ -37,23 +37,23 @@ class Snake {
         switch (key) {
             case 37: 
                 //Left
-                this.xVelocity = 0
+                this.xVelocity = -1
                 this.yVelocity = 0
             break
             case 38:
                 //Up
                 this.xVelocity = 0
-                this.yVelocity = 0
+                this.yVelocity = -1
             break
             case 39:
                 //Right
-                this.xVelocity = 0
+                this.xVelocity = 1
                 this.yVelocity = 0
             break
             case 40:
                 //Down
                 this.xVelocity = 0
-                this.yVelocity = 0
+                this.yVelocity = 1
             break
         }
     }
