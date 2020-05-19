@@ -1,3 +1,8 @@
+interface Coordinates {
+    x: number,
+    y: number
+}
+
 export default class Snake {
     game: number
     canvas: HTMLCanvasElement
@@ -5,6 +10,9 @@ export default class Snake {
     xVelocity = 0
     yVelocity = 0
     tail = 5
+    xPosition = 10
+    yPosition = 10
+    positions: Coordinates[] = []
 
     constructor(public canvasElement: HTMLCanvasElement) {    
         if (canvasElement.getContext) {
