@@ -52,12 +52,6 @@ export default class Snake {
         this.xPosition += this.xVelocity
         this.yPosition += this.yVelocity
 
-        if (this.apple.x === this.xPosition && this.apple.y === this.yPosition) {
-            this.tail++
-
-            this.apple = this.appleSpawn()
-        }
-
         if (this.xPosition > this.gridSize.x - 1) {
             this.xPosition = 0
         }
@@ -72,6 +66,12 @@ export default class Snake {
 
         if (this.yPosition < 0) {
             this.yPosition = this.gridSize.y - 1
+        }
+        
+        if (this.apple.x === this.xPosition && this.apple.y === this.yPosition) {
+            this.tail++
+
+            this.apple = this.appleSpawn()
         }
 
         this.ctx.fillStyle = '#83eb34'
