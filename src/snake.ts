@@ -38,6 +38,25 @@ export default class Snake {
     play = ():void => {
         this.ctx.fillStyle = 'black'
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
+
+        this.xPosition += this.xVelocity
+        this.yPosition += this.yVelocity
+
+        this.ctx.fillStyle = 'white'
+
+        for (let i = 0; i < this.positions.length; i++) {
+            const position = this.positions[i]
+            this.ctx.fillRect(position.x * 10, position.y * 10, 10, 10)
+        }
+
+        this.positions.push({
+            x: this.xPosition,
+            y: this.yPosition
+        })
+
+        if (this.positions.length > this.tail) {
+            this.positions.shift()
+        }
     }
 
     move = (event: KeyboardEvent):void => {
