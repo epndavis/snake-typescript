@@ -14,7 +14,10 @@ export default class Snake {
     yPosition = 10
     positions: Coordinates[] = []
     tileSize = 20
-    tileCount = 20
+    gridSize: Coordinates = {
+        x: 20,
+        y: 20
+    }
     apple: Coordinates
 
     constructor(public canvasElement: HTMLCanvasElement) {    
@@ -55,20 +58,20 @@ export default class Snake {
             this.apple = this.appleSpawn()
         }
 
-        if (this.xPosition > this.tileCount - 1) {
+        if (this.xPosition > this.gridSize.x - 1) {
             this.xPosition = 0
         }
 
         if (this.xPosition < 0) {
-            this.xPosition = this.tileCount 
+            this.xPosition = this.gridSize.x - 1
         }
 
-        if (this.yPosition > this.tileCount - 1) {
+        if (this.yPosition > this.gridSize.y - 1) {
             this.yPosition = 0
         }
 
         if (this.yPosition < 0) {
-            this.yPosition = this.tileCount 
+            this.yPosition = this.gridSize.y - 1
         }
 
         this.ctx.fillStyle = '#83eb34'
@@ -127,8 +130,8 @@ export default class Snake {
 
     appleSpawn():Coordinates {
         return {
-            x: Math.floor(Math.random() * Math.floor(this.tileCount)),
-            y: Math.floor(Math.random() * Math.floor(this.tileCount))
+            x: Math.floor(Math.random() * Math.floor(this.gridSize.x)),
+            y: Math.floor(Math.random() * Math.floor(this.gridSize.y))
         }
     }
 }
