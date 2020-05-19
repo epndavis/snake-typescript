@@ -1,20 +1,37 @@
 {
-    "name": "snake",
-    "verion": "0.1.0",
-    "scripts": {
-        "dev": "npm run development",
-        "development": "npx webpack --mode=development",
-        "watch": "npx webpack --mode=development --watch",
-        "prod": "npm run production",
-        "production": "webpack --mode=production",
-        "serve": "webpack-dev-server --config=webpack.demo.js"
-    },
-    "devDependencies": {
-        "ts-loader": "^7.0.4",
-        "typescript": "^3.9.2",
-        "webpack": "^4.43.0",
-        "webpack-cli": "^3.3.11",
-        "webpack-dev-server": "^3.11.0",
-        "webpack-merge": "^4.2.2"
-    }
+  "name": "snake-typescript",
+  "description": "A small project to practice typescript by building a snake game class mixed with webpack bundling.",
+  "version": "1.0.0",
+  "main": "./dist/snake.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "npx webpack --mode=development",
+    "watch": "npx webpack --mode=development --watch",
+    "prod": "npm run production",
+    "production": "webpack --mode=production",
+    "serve": "webpack-dev-server --config=webpack.demo.js"
+  },
+  "devDependencies": {
+    "ts-loader": "^7.0.4",
+    "typescript": "^3.9.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epndavis/snake.git"
+  },
+  "keywords": [
+    "snake",
+    "typescript",
+    "webpack"
+  ],
+  "author": "epndavis",
+  "bugs": {
+    "url": "https://github.com/epndavis/snake/issues"
+  },
+  "homepage": "https://github.com/epndavis/snake",
+  "license": "MIT"
 }
