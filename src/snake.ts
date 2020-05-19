@@ -16,22 +16,22 @@ export default class Snake {
     }
 
     start(): void {
-        document.addEventListener('keypress', this.move)
+        document.addEventListener('keydown', this.move)
 
         this.game = setInterval(this.play, 100)
     }
 
     stop(): void {
-        document.removeEventListener('keypress', this.move)
+        document.removeEventListener('keydown', this.move)
 
         clearInterval(this.game)
     }
 
-    play(): void {
+    play = ():void => {
         console.log(this.xVelocity, this.yVelocity)
     }
 
-    move(event: KeyboardEvent): void {
+    move = (event: KeyboardEvent):void => {
         const key:number = event.which || event.keyCode
 
         switch (key) {
