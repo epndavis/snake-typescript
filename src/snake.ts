@@ -81,6 +81,10 @@ export default class Snake {
         for (let i = 0; i < this.positions.length; i++) {
             const position = this.positions[i]
             this.ctx.fillRect(position.x * this.tileSize, position.y * this.tileSize, this.tileSize, this.tileSize)
+
+            if (position.x === this.xPosition && position.y === this.yPosition) {
+                return this.die()
+            }
         }
 
         this.positions.push({
@@ -118,5 +122,11 @@ export default class Snake {
                 this.yVelocity = 1
             break
         }
+    }
+
+    die = ():void => {
+        console.log('Game Over!')
+
+        this.stop()
     }
 }
