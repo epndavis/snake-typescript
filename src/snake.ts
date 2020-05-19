@@ -78,7 +78,7 @@ export default class Snake {
 
         for (let i = 0; i < this.positions.length; i++) {
             const position = this.positions[i]
-            this.ctx.fillRect(position.x * this.tileSize, position.y * this.tileSize, this.tileSize, this.tileSize)
+            this.ctx.fillRect(position.x * this.gridSize.x, position.y * this.gridSize.y, this.tileSize, this.tileSize)
 
             if (position.x === this.xPosition && position.y === this.yPosition) {
                 return this.die()
