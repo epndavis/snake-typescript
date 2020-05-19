@@ -15,6 +15,10 @@ export default class Snake {
     positions: Coordinates[] = []
     tileSize = 20
     tileCount = 20
+    apple: Coordinates = {
+        x: Math.floor(Math.random() * Math.floor(this.tileCount)),
+        y: Math.floor(Math.random() * Math.floor(this.tileCount))
+    }
 
     constructor(public canvasElement: HTMLCanvasElement) {    
         if (canvasElement.getContext) {
@@ -41,8 +45,20 @@ export default class Snake {
         this.ctx.fillStyle = 'black'
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
 
+        this.ctx.fillStyle = 'red'
+        this.ctx.fillRect(this.apple.x * this.tileSize, this.apple.y * this.tileSize, this.tileSize, this.tileSize)
+
         this.xPosition += this.xVelocity
         this.yPosition += this.yVelocity
+
+        if (this.apple.x === this.xPosition && this.apple.y === this.yPosition) {
+            this.tail++
+
+            this.apple = {
+                x: Math.floor(Math.random() * Math.floor(this.tileCount)),
+                y: Math.floor(Math.random() * Math.floor(this.tileCount))
+            }
+        }
 
         if (this.xPosition > this.tileCount - 1) {
             this.xPosition = 0
