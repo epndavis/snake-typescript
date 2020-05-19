@@ -18,5 +18,5 @@ module.exports = {
   output: {
     filename: 'snake.js',
     path: path.resolve(__dirname, 'dist'),
-  },
+  }
 };
