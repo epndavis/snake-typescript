@@ -15,17 +15,15 @@ export default class Snake {
     positions: Coordinates[] = []
     tileSize = 20
     tileCount = 20
-    apple: Coordinates = {
-        x: Math.floor(Math.random() * Math.floor(this.tileCount)),
-        y: Math.floor(Math.random() * Math.floor(this.tileCount))
-    }
+    apple: Coordinates
 
     constructor(public canvasElement: HTMLCanvasElement) {    
         if (canvasElement.getContext) {
             this.canvas = canvasElement
             this.ctx = canvasElement.getContext('2d')
+            this.apple = this.appleSpawn()
         } else {
-            console.error('Canvas is not support in your browser!')
+            console.error('Canvas is not supported in your browser!')
         }
     }
 
@@ -54,10 +52,7 @@ export default class Snake {
         if (this.apple.x === this.xPosition && this.apple.y === this.yPosition) {
             this.tail++
 
-            this.apple = {
-                x: Math.floor(Math.random() * Math.floor(this.tileCount)),
-                y: Math.floor(Math.random() * Math.floor(this.tileCount))
-            }
+            this.apple = this.appleSpawn()
         }
 
         if (this.xPosition > this.tileCount - 1) {
@@ -76,7 +71,7 @@ export default class Snake {
             this.yPosition = this.tileCount 
         }
 
-        this.ctx.fillStyle = 'white'
+        this.ctx.fillStyle = '#83eb34'
 
         for (let i = 0; i < this.positions.length; i++) {
             const position = this.positions[i]
@@ -128,5 +123,12 @@ export default class Snake {
         console.log('Game Over!')
 
         this.stop()
+    }
+
+    appleSpawn():Coordinates {
+        return {
+            x: Math.floor(Math.random() * Math.floor(this.tileCount)),
+            y: Math.floor(Math.random() * Math.floor(this.tileCount))
+        }
     }
 }
