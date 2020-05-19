@@ -13,6 +13,8 @@ export default class Snake {
     xPosition = 10
     yPosition = 10
     positions: Coordinates[] = []
+    tileSize = 20
+    tileCount = 20
 
     constructor(public canvasElement: HTMLCanvasElement) {    
         if (canvasElement.getContext) {
@@ -42,11 +44,27 @@ export default class Snake {
         this.xPosition += this.xVelocity
         this.yPosition += this.yVelocity
 
+        if (this.xPosition > this.tileCount - 1) {
+            this.xPosition = 0
+        }
+
+        if (this.xPosition < 0) {
+            this.xPosition = this.tileCount 
+        }
+
+        if (this.yPosition > this.tileCount - 1) {
+            this.yPosition = 0
+        }
+
+        if (this.yPosition < 0) {
+            this.yPosition = this.tileCount 
+        }
+
         this.ctx.fillStyle = 'white'
 
         for (let i = 0; i < this.positions.length; i++) {
             const position = this.positions[i]
-            this.ctx.fillRect(position.x * 10, position.y * 10, 10, 10)
+            this.ctx.fillRect(position.x * this.tileSize, position.y * this.tileSize, this.tileSize, this.tileSize)
         }
 
         this.positions.push({
