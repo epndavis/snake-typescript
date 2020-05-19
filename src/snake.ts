@@ -20,7 +20,8 @@ export default class Snake {
     }
     apple: Coordinates
 
-    constructor(public canvasElement: HTMLCanvasElement) {    
+    constructor(public canvasElement: HTMLCanvasElement) {  
+        // Check if browser supports the canvas context  
         if (canvasElement.getContext) {
             this.canvas = canvasElement
             this.ctx = canvasElement.getContext('2d')
@@ -43,15 +44,19 @@ export default class Snake {
     }
 
     play = ():void => {
+        // Redraw the canvas
         this.ctx.fillStyle = 'black'
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
 
+        // Draw apple
         this.ctx.fillStyle = 'red'
         this.ctx.fillRect(this.apple.x * this.tileSize, this.apple.y * this.tileSize, this.tileSize, this.tileSize)
 
+        // Set new positioning based on the snake direction
         this.xPosition += this.xVelocity
         this.yPosition += this.yVelocity
 
+        // If snake exits grid teleport to opposite side
         if (this.xPosition > this.gridSize.x - 1) {
             this.xPosition = 0
         }
@@ -68,12 +73,15 @@ export default class Snake {
             this.yPosition = this.gridSize.y - 1
         }
         
+        // Check if snake has eaten the apple
         if (this.apple.x === this.xPosition && this.apple.y === this.yPosition) {
             this.tail++
 
             this.apple = this.appleSpawn()
         }
 
+
+        // Draw the snake
         this.ctx.fillStyle = '#83eb34'
 
         for (let i = 0; i < this.positions.length; i++) {
@@ -85,11 +93,13 @@ export default class Snake {
             }
         }
 
+        // Add the snakes new position to array of coordinates
         this.positions.push({
             x: this.xPosition,
             y: this.yPosition
         })
 
+        // Keep only coordinates that don't exceed the tail length
         if (this.positions.length > this.tail) {
             this.positions.shift()
         }
