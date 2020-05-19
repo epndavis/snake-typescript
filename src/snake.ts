@@ -28,7 +28,8 @@ export default class Snake {
     }
 
     play = ():void => {
-        console.log(this.xVelocity, this.yVelocity)
+        this.ctx.fillStyle = 'black'
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
     }
 
     move = (event: KeyboardEvent):void => {
