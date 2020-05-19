@@ -7,7 +7,7 @@ export default class Snake {
     game: number
     canvas: HTMLCanvasElement
     ctx: CanvasRenderingContext2D 
-    xVelocity = 0
+    xVelocity = 1
     yVelocity = 0
     tail = 5
     xPosition = 10
